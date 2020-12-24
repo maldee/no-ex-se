@@ -1,0 +1,56 @@
+const { authJwt } = require("../middleware");
+const blogPostController = require("../controllers/blog/blog.post.controller");
+const blogCategoryController = require("../controllers/blog/blog.category.controller");
+const blogAuthorController = require("../controllers/blog/blog.author.controller");
+
+module.exports = function(app) {
+    app.use(function(req, res, next) {
+        res.header(
+            "Access-Control-Allow-Headers",
+            "x-access-token, Origin, Content-Type, Accept"
+        );
+        next();
+    });
+
+    app.post(
+        "/api/blog/addPost", [authJwt.verifyToken],
+        blogPostController.create
+    );
+
+    app.post(
+        "/api/blog/addCategory", [authJwt.verifyToken],
+        blogCategoryController.create
+    );
+
+    app.get(
+        "/api/blog/posts", [authJwt.verifyToken],
+        blogPostController.findAllPosts
+    );
+
+    app.get("/api/blog/categories", blogCategoryController.findAllCategories);
+
+    app.get(
+        "/api/blog/authors/", [authJwt.verifyToken],
+        blogAuthorController.findAllAuthors
+    );
+
+    app.get(
+        "/api/blog/posts/mostPopular", [authJwt.verifyToken],
+        blogPostController.findLatestPosts
+    );
+
+    app.get(
+        "/api/blog/posts/:slug", [authJwt.verifyToken],
+        blogPostController.findBySlug
+    );
+
+    app.get(
+        "/api/blog/posts/byCategory/list/:category", [authJwt.verifyToken],
+        blogPostController.findByCategory
+    );
+
+    app.get(
+        "/api/blog/posts/q/:q", [authJwt.verifyToken],
+        blogPostController.searchPost
+    );
+};
