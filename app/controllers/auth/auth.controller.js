@@ -66,59 +66,61 @@ exports.signin = (req, res) => {
         .then(user => {
 
             console.log("coco count " + user.count);
-            if (user.count = 0) {
+            if (user.count == 0) {
                 return res.status(404).send({ message: "User Not found." });
-            }
+            } else {
+                console.log("coco 1 " + user);
+                console.log("coco 2 " + JSON.stringify(user));
+                console.log("coco 3 " + JSON.stringify(user.email));
+                var objectArray = [];
+                for (var i in user) {
+                    var d = user[i];
 
-            console.log("coco 1 " + user);
-            console.log("coco 2 " + JSON.stringify(user));
-            console.log("coco 3 " + JSON.stringify(user.email));
-            var objectArray = [];
-            for (var i in user) {
-                var d = user[i];
-
-                var results = {
-                    id: d.id,
-                    email: d.email,
-                    password: d.password,
-                    displayName: d.displayName,
-                    roles: d.roles,
-                    accessToken: d.accessToken,
-                };
-                objectArray.push(results);
-            }
-            console.log("start-" + JSON.stringify(objectArray) + "-end");
-
+                    var results = {
+                        id: d.id,
+                        email: d.email,
+                        password: d.password,
+                        displayName: d.displayName,
+                        roles: d.roles,
+                        accessToken: d.accessToken,
+                    };
+                    objectArray.push(results);
+                }
+                console.log("start-" + JSON.stringify(objectArray) + "-end");
 
 
-            var passwordIsValid = bcrypt.compareSync(
-                req.body.password,
-                results.password
-            );
 
-            if (!passwordIsValid) {
-                return res.status(401).send({
-                    accessToken: null,
-                    message: "Invalid Password!"
+                var passwordIsValid = bcrypt.compareSync(
+                    req.body.password,
+                    results.password
+                );
+
+                if (!passwordIsValid) {
+                    return res.status(401).send({
+                        accessToken: null,
+                        message: "Invalid Password!"
+                    });
+                }
+
+
+
+                var token = jwt.sign({ id: user.id }, config.secret, {
+                    expiresIn: 86400 // 24 hours
                 });
+
+
+                const userDetails = {
+                    id: results.id,
+                    displayName: results.displayName,
+                    email: results.email,
+                    roles: results.role,
+                    accessToken: token
+                }
+
+                res.status(200).send(userDetails);
             }
 
 
-
-            var token = jwt.sign({ id: user.id }, config.secret, {
-                expiresIn: 86400 // 24 hours
-            });
-
-
-            const userDetails = {
-                id: results.id,
-                displayName: results.displayName,
-                email: results.email,
-                roles: results.role,
-                accessToken: token
-            }
-
-            res.status(200).send(userDetails);
 
             // var authorities = [];
             // user.getRoles().then(roles => {
