@@ -17,8 +17,8 @@ exports.signup = (req, res) => {
     };
 
     User.findAndCountAll({ where: { email: requser.email } })
-        .then(user => {
-            if (user.count != 0) {
+        .then(fuser => {
+            if (fuser.count != 0) {
                 res.status(500).send({ message: "Email already exists" });
             } else {
                 // Save User to Database
@@ -60,7 +60,7 @@ exports.signup = (req, res) => {
             }
         })
         .catch(err => {
-            res.status(500).send({ message: err.message });
+            res.status(500).send({ message: "Email already exists" });
         });
 
 
