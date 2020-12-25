@@ -49,13 +49,11 @@ exports.signup = (req, res) => {
                                 }
 
                                 res.status(200).send(userDetails);
-
-                                // res.send({ message: "User registered successfully!" });
                             });
                         }
                     })
                     .catch(err => {
-                        res.status(500).send({ message: err.message });
+                        res.status(500).send({ message: "Email already exists" });
                     });
             }
         })
