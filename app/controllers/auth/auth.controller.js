@@ -69,14 +69,9 @@ exports.signin = (req, res) => {
             if (user.count == 0) {
                 return res.status(404).send({ message: "User Not found." });
             } else {
-                console.log("coco 1 " + user);
-                console.log("coco 2 " + JSON.stringify(user));
-                console.log("coco 3 " + JSON.stringify(user.rows['displayName']));
-                console.log("coco 3 " + JSON.stringify(user.rows.email));
+
                 console.log("coco 4 " + JSON.stringify(user.rows[0].email));
-                console.log("coco 4 " + JSON.stringify(user.rows[0]['email']));
-                // console.log("coco 4 " + JSON.stringify(user.rows[0].['email']));
-                console.log("coco 3 " + JSON.stringify(user.rows[1]));
+
                 var objectArray = [];
                 for (var i in user.rows) {
                     var d = user.rows[i];
@@ -102,7 +97,6 @@ exports.signin = (req, res) => {
 
                 if (!passwordIsValid) {
                     return res.status(401).send({
-                        accessToken: null,
                         message: "Invalid Password!"
                     });
                 }
