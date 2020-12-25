@@ -73,8 +73,8 @@ exports.signin = (req, res) => {
                 console.log("coco 2 " + JSON.stringify(user));
                 console.log("coco 3 " + JSON.stringify(user.email));
                 var objectArray = [];
-                for (var i in user) {
-                    var d = user[i];
+                for (var i in user.rows) {
+                    var d = user.rows[i];
 
                     var results = {
                         id: d.id,
@@ -92,7 +92,7 @@ exports.signin = (req, res) => {
 
                 var passwordIsValid = bcrypt.compareSync(
                     req.body.password,
-                    user.rows.password
+                    objectArray.password
                 );
 
                 if (!passwordIsValid) {
