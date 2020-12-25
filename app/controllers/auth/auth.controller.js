@@ -81,7 +81,7 @@ exports.signin = (req, res) => {
             }
             console.log("start-" + JSON.stringify(objectArray) + "-end");
 
-            if (!user) {
+            if (!results.email) {
                 return res.status(404).send({ message: "User Not found." });
             }
 
