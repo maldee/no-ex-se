@@ -71,9 +71,12 @@ exports.signin = (req, res) => {
             } else {
                 console.log("coco 1 " + user);
                 console.log("coco 2 " + JSON.stringify(user));
-                console.log("coco 3 " + JSON.stringify(user.email));
+                console.log("coco 3 " + JSON.stringify(user.rows['displayName']));
+                console.log("coco 3 " + JSON.stringify(user.rows.email));
+                console.log("coco 3 " + JSON.stringify(user.rows[0]));
+                console.log("coco 3 " + JSON.stringify(user.rows[1]));
                 var objectArray = [];
-                for (var i in user.rows[0]) {
+                for (var i in user.rows) {
                     var d = user.rows[i];
 
                     var results = {
