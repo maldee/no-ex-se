@@ -73,7 +73,9 @@ exports.signin = (req, res) => {
                 console.log("coco 2 " + JSON.stringify(user));
                 console.log("coco 3 " + JSON.stringify(user.rows['displayName']));
                 console.log("coco 3 " + JSON.stringify(user.rows.email));
-                console.log("coco 3 " + JSON.stringify(user.rows[0]));
+                console.log("coco 4 " + JSON.stringify(user.rows[0].email));
+                console.log("coco 4 " + JSON.stringify(user.rows[0]['email']));
+                console.log("coco 4 " + JSON.stringify(user.rows[0].['email']));
                 console.log("coco 3 " + JSON.stringify(user.rows[1]));
                 var objectArray = [];
                 for (var i in user.rows) {
