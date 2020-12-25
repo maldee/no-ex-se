@@ -23,19 +23,19 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/blog/posts", [authJwt.verifyToken],
+        "/api/blog/posts",
         blogPostController.findAllPosts
     );
 
     app.get("/api/blog/categories", blogCategoryController.findAllCategories);
 
     app.get(
-        "/api/blog/authors/", [authJwt.verifyToken],
+        "/api/blog/authors/",
         blogAuthorController.findAllAuthors
     );
 
     app.get(
-        "/api/blog/posts/mostPopular", [authJwt.verifyToken],
+        "/api/blog/posts/mostPopular",
         blogPostController.findLatestPosts
     );
 
@@ -45,12 +45,12 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/blog/posts/byCategory/list/:category", [authJwt.verifyToken],
+        "/api/blog/posts/byCategory/list/:category",
         blogPostController.findByCategory
     );
 
     app.get(
-        "/api/blog/posts/q/:q", [authJwt.verifyToken],
+        "/api/blog/posts/q/:q",
         blogPostController.searchPost
     );
 };

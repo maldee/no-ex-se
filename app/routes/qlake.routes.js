@@ -27,38 +27,38 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/qlake/questions", [authJwt.verifyToken],
+        "/api/qlake/questions",
         qlakeQuestionController.findAllQuestions
     );
     app.get(
-        "/api/qlake/questions/mostPopular", [authJwt.verifyToken],
+        "/api/qlake/questions/mostPopular",
         qlakeQuestionController.findLatestQuestions
     );
     app.get(
-        "/api/qlake/questions/:id", [authJwt.verifyToken],
+        "/api/qlake/questions/:id",
         qlakeQuestionController.findById
     );
     app.get(
-        "/api/qlake/questions/q/:q", [authJwt.verifyToken],
+        "/api/qlake/questions/q/:q",
         qlakeQuestionController.searchQuestion
     );
     app.get(
-        "/api/qlake/questions/byCategory/list/:category", [authJwt.verifyToken],
+        "/api/qlake/questions/byCategory/list/:category",
         qlakeQuestionController.findByCategory
     );
 
     app.get(
-        "/api/qlake/categories", [authJwt.verifyToken],
+        "/api/qlake/categories",
         qlakeCategoryController.findAllCategories
     );
 
     app.get(
-        "/api/qlake/answers/:id", [authJwt.verifyToken],
+        "/api/qlake/answers/:id",
         qlakeAnswerController.findAnswersById
     );
 
     app.get(
-        "/api/qlake/authors/", [authJwt.verifyToken],
+        "/api/qlake/authors/",
         qlakeAuthorController.findAllAuthors
     );
 };

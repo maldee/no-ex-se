@@ -19,22 +19,22 @@ module.exports = function(app) {
 
     // Retrieve all Chatbits Posts
     app.get(
-        "/api/chatbits/phrases", [authJwt.verifyToken],
+        "/api/chatbits/phrases",
         chatbitsPostController.findAllPosts
     );
 
     app.get(
-        "/api/chatbits/categories", [authJwt.verifyToken],
+        "/api/chatbits/categories",
         chatbitsCategoryController.findAllCategories
     );
 
     app.get(
-        "/api/chatbits/situations", [authJwt.verifyToken],
+        "/api/chatbits/situations",
         chatbitsSituationController.findAllSituations
     );
 
     app.get(
-        "/api/chatbits/phrases/:searched", [authJwt.verifyToken],
+        "/api/chatbits/phrases/:searched",
         chatbitsPostController.searchByEnglishPhrase
     );
 };

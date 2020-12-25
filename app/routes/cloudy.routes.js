@@ -11,11 +11,11 @@ module.exports = function(app) {
     });
 
     app.get(
-        "/api/cloudy/products", [authJwt.verifyToken],
+        "/api/cloudy/products",
         cloudyProductController.findAllProducts
     );
     app.get(
-        "/api/cloudy/products/:id", [authJwt.verifyToken],
+        "/api/cloudy/products/:id",
         cloudyProductController.findByProductId
     );
 };

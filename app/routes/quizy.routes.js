@@ -18,17 +18,17 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/quizy/setup/:amount/:category/:difficulty/:type", [authJwt.verifyToken],
+        "/api/quizy/setup/:amount/:category/:difficulty/:type",
         quizyQuizController.findAll
     );
 
     app.get(
-        "/api/quizy/quizes/categories", [authJwt.verifyToken],
+        "/api/quizy/quizes/categories",
         quizyQuizCatgoryController.findAllCategories
     );
 
     app.get(
-        "/api/quizy/quizes/types", [authJwt.verifyToken],
+        "/api/quizy/quizes/types",
         quizyQuizTypeController.findAllTypes
     );
 };
