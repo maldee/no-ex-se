@@ -40,7 +40,7 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/blog/posts/:slug", [authJwt.verifyToken],
+        "/api/blog/posts/:slug",
         blogPostController.findBySlug
     );
 
