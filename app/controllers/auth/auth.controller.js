@@ -64,8 +64,9 @@ exports.signin = (req, res) => {
 
     User.findAll({ where: { email: loginUser.email } })
         .then(user => {
-            console.log("coco 1 " + JSON.stringify(user));
-            console.log("coco 2 " + JSON.stringify(user.email));
+            console.log("coco 1 " + user);
+            console.log("coco 2 " + JSON.stringify(user));
+            console.log("coco 3 " + JSON.stringify(user.email));
             var objectArray = [];
             for (var i in user) {
                 var d = user[i];
