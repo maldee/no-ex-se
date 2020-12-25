@@ -73,7 +73,7 @@ exports.signin = (req, res) => {
                 console.log("coco 2 " + JSON.stringify(user));
                 console.log("coco 3 " + JSON.stringify(user.email));
                 var objectArray = [];
-                for (var i in user.rows) {
+                for (var i in user.rows[0]) {
                     var d = user.rows[i];
 
                     var results = {
