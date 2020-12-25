@@ -64,7 +64,8 @@ exports.signin = (req, res) => {
 
     User.findAll({ where: { email: loginUser.email } })
         .then(user => {
-
+            console.log("coco 1 " + JSON.stringify(user));
+            console.log("coco 2 " + JSON.stringify(user.email));
             var objectArray = [];
             for (var i in user) {
                 var d = user[i];
@@ -81,7 +82,7 @@ exports.signin = (req, res) => {
             }
             console.log("start-" + JSON.stringify(objectArray) + "-end");
 
-            if (!results.email) {
+            if (!user) {
                 return res.status(404).send({ message: "User Not found." });
             }
 
