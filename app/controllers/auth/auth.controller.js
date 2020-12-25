@@ -97,7 +97,7 @@ exports.signin = (req, res) => {
 
                 var passwordIsValid = bcrypt.compareSync(
                     req.body.password,
-                    objectArray.password
+                    user.rows[0].password
                 );
 
                 if (!passwordIsValid) {
