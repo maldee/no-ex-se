@@ -11,14 +11,15 @@ var bcrypt = require("bcryptjs");
 exports.signup = (req, res) => {
 
     const user = {
-        displayName: req.body.displayName,
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
+        displayName: req.body.displayName,
     };
 
     // Save User to Database
     User.create(user)
         .then(user => {
+
             if (req.body.roles) {
                 Role.findAll({
                     where: {
@@ -37,9 +38,9 @@ exports.signup = (req, res) => {
 
                     const userDetails = {
                         id: user.id,
-                        displayName: user.displayName,
                         email: user.email,
-                        password: user.password
+                        password: user.password,
+                        displayName: user.displayName,
                     }
 
                     res.status(200).send(userDetails);
