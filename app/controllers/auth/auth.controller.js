@@ -86,13 +86,13 @@ exports.signin = (req, res) => {
                     };
                     objectArray.push(results);
                 }
-                console.log("start-" + JSON.stringify(objectArray) + "-end");
+                // console.log("start-" + JSON.stringify(objectArray) + "-end");
 
 
 
                 var passwordIsValid = bcrypt.compareSync(
                     req.body.password,
-                    results.password
+                    rows.password
                 );
 
                 if (!passwordIsValid) {
