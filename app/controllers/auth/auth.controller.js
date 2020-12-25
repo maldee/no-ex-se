@@ -10,48 +10,60 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
 
-    const user = {
+    const requser = {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
         displayName: req.body.displayName,
     };
 
-    // Save User to Database
-    User.create(user)
+    User.findAndCountAll({ where: { email: requser.email } })
         .then(user => {
-
-            if (req.body.roles) {
-                Role.findAll({
-                    where: {
-                        id: {
-                            [Op.or]: req.body.roles
-                        }
-                    }
-                }).then(roles => {
-                    user.setRoles(roles).then(() => {
-                        res.send({ message: "User registered successfully!" });
-                    });
-                });
+            if (user.count != 0) {
+                res.status(500).send({ message: "Email already exists" });
             } else {
-                // user role = 1
-                user.setRoles([1]).then(() => {
+                // Save User to Database
+                User.create(requser)
+                    .then(user => {
 
-                    const userDetails = {
-                        id: user.id,
-                        email: user.email,
-                        password: user.password,
-                        displayName: user.displayName,
-                    }
+                        if (req.body.roles) {
+                            Role.findAll({
+                                where: {
+                                    id: {
+                                        [Op.or]: req.body.roles
+                                    }
+                                }
+                            }).then(roles => {
+                                user.setRoles(roles).then(() => {
+                                    res.send({ message: "User registered successfully!" });
+                                });
+                            });
+                        } else {
+                            // user role = 1
+                            user.setRoles([1]).then(() => {
 
-                    res.status(200).send(userDetails);
+                                const userDetails = {
+                                    id: user.id,
+                                    email: user.email,
+                                    password: user.password,
+                                    displayName: user.displayName,
+                                }
 
-                    // res.send({ message: "User registered successfully!" });
-                });
+                                res.status(200).send(userDetails);
+
+                                // res.send({ message: "User registered successfully!" });
+                            });
+                        }
+                    })
+                    .catch(err => {
+                        res.status(500).send({ message: err.message });
+                    });
             }
         })
         .catch(err => {
             res.status(500).send({ message: err.message });
         });
+
+
 };
 
 exports.signin = (req, res) => {
