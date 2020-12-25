@@ -67,7 +67,7 @@ exports.signin = (req, res) => {
 
             console.log("coco count " + user.count);
             if (user.count == 0) {
-                return res.status(500).send({ message: "User Not found." });
+                return res.status(404).send({ message: "User Not found." });
             } else {
                 console.log("coco 1 " + user);
                 console.log("coco 2 " + JSON.stringify(user));
