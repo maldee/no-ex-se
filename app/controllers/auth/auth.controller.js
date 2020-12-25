@@ -62,8 +62,14 @@ exports.signin = (req, res) => {
 
     console.log(req.body.email)
 
-    User.findAll({ where: { email: loginUser.email } })
+    User.findAndCountAll({ where: { email: loginUser.email } })
         .then(user => {
+
+            console.log("coco count " + user.count);
+            if (user.count = 0) {
+                return res.status(404).send({ message: "User Not found." });
+            }
+
             console.log("coco 1 " + user);
             console.log("coco 2 " + JSON.stringify(user));
             console.log("coco 3 " + JSON.stringify(user.email));
@@ -83,9 +89,7 @@ exports.signin = (req, res) => {
             }
             console.log("start-" + JSON.stringify(objectArray) + "-end");
 
-            if (!user) {
-                return res.status(404).send({ message: "User Not found." });
-            }
+
 
             var passwordIsValid = bcrypt.compareSync(
                 req.body.password,
