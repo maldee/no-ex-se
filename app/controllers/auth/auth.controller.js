@@ -16,52 +16,42 @@ exports.signup = (req, res) => {
         displayName: req.body.displayName,
     };
 
-    User.findAndCountAll({ where: { email: requser.email } })
-        .then(fuser => {
-            if (fuser.count != 0) {
-                res.status(500).send({ message: "Email already exists" });
-            } else {
-                // Save User to Database
-                User.create(requser)
-                    .then(user => {
+    // Save User to Database
+    User.create(requser)
+        .then(user => {
 
-                        if (req.body.roles) {
-                            Role.findAll({
-                                where: {
-                                    id: {
-                                        [Op.or]: req.body.roles
-                                    }
-                                }
-                            }).then(roles => {
-                                user.setRoles(roles).then(() => {
-                                    res.send({ message: "User registered successfully!" });
-                                });
-                            });
-                        } else {
-                            // user role = 1
-                            user.setRoles([1]).then(() => {
-
-                                const userDetails = {
-                                    id: user.id,
-                                    email: user.email,
-                                    password: user.password,
-                                    displayName: user.displayName,
-                                }
-
-                                res.status(200).send(userDetails);
-                            });
+            if (req.body.roles) {
+                Role.findAll({
+                    where: {
+                        id: {
+                            [Op.or]: req.body.roles
                         }
-                    })
-                    .catch(err => {
-                        res.status(500).send({ message: "Email already exists" });
+                    }
+                }).then(roles => {
+                    user.setRoles(roles).then(() => {
+                        res.send({ message: "User registered successfully!" });
                     });
+                });
+            } else {
+                // user role = 1
+                user.setRoles([1]).then(() => {
+
+                    const userDetails = {
+                        id: user.id,
+                        email: user.email,
+                        password: user.password,
+                        displayName: user.displayName,
+                    }
+
+                    res.status(200).send(userDetails);
+
+                    // res.send({ message: "User registered successfully!" });
+                });
             }
         })
         .catch(err => {
-            res.status(500).send({ message: "Email already exists" });
+            res.status(500).send({ message: err.message });
         });
-
-
 };
 
 exports.signin = (req, res) => {
