@@ -6,7 +6,7 @@ const helmet = require('helmet');
 
 var upload = multer();
 const app = express();
-app.use(helmet());
+// app.use(helmet());
 
 app.use(cors());
 var corsOptions = {
