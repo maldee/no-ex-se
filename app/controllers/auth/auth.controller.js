@@ -113,7 +113,7 @@ exports.signin = (req, res) => {
                     id: results.id,
                     displayName: results.displayName,
                     email: results.email,
-                    role: results.role,
+                    role: user.rows[0].role,
                     accessToken: token
                 }
 
