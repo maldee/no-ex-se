@@ -91,7 +91,7 @@ exports.findLatestPosts = (req, res) => {
             order: [
                 ['likes', 'DESC'],
             ],
-            limit: 10
+            limit: 5
         })
         .then((data) => {
             var objectArray = [];
