@@ -48,7 +48,11 @@ exports.create = (req, res) => {
 };
 
 exports.findAllPosts = (req, res) => {
-    BlogPost.findAll()
+    BlogPost.findAll({
+            order: [
+                ['publish', 'DESC'],
+            ]
+        })
         .then((data) => {
             var objectArray = [];
             for (var i in data) {
