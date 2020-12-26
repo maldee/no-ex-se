@@ -22,7 +22,7 @@ module.exports = function(app) {
         blogCategoryController.create
     );
 
-    app.post(
+    app.get(
         "/api/blog/posts",
         blogPostController.findAllPosts
     );
