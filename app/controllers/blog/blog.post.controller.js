@@ -87,7 +87,12 @@ exports.findAllPosts = (req, res) => {
 };
 
 exports.findLatestPosts = (req, res) => {
-    BlogPost.findAll()
+    BlogPost.findAll({
+            order: [
+                ['likes', 'DESC'],
+            ],
+            limit: 10
+        })
         .then((data) => {
             var objectArray = [];
             for (var i in data) {
