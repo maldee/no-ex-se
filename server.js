@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const multer = require('multer')
+const multer = require('multer');
+const helmet = require('helmet');
+
 var upload = multer();
 const app = express();
+app.use(helmet());
 
 app.use(cors());
 var corsOptions = {
