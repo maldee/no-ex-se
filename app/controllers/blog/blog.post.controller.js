@@ -22,7 +22,7 @@ exports.create = (req, res) => {
     const post = {
         id: req.body.id,
         author: req.body.author,
-        url: url,
+        url: req.body.url,
         title: req.body.title,
         slug: req.body.slug,
         image: req.body.image,
