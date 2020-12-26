@@ -82,7 +82,7 @@ exports.signin = (req, res) => {
                         email: d.email,
                         password: d.password,
                         displayName: d.displayName,
-                        roles: d.roles,
+                        role: d.role,
                         accessToken: d.accessToken,
                     };
                     objectArray.push(results);
