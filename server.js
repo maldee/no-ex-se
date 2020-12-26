@@ -6,7 +6,11 @@ var upload = multer();
 const app = express();
 
 app.use(cors());
-app.options('*', cors());
+var corsOptions = {
+    origin: "https://deeflow.com"
+};
+
+app.use(cors(corsOptions));
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
