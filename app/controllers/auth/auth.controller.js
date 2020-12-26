@@ -71,7 +71,7 @@ exports.signin = (req, res) => {
                 return res.status(404).send({ message: "User Not found." });
             } else {
 
-                console.log("coco 4 " + JSON.stringify(user.rows[0].email));
+                console.log("coco 4 " + JSON.stringify(user.rows[0].role));
 
                 var objectArray = [];
                 for (var i in user.rows) {
