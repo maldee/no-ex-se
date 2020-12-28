@@ -50,6 +50,11 @@ module.exports = function(app) {
     );
 
     app.get(
+        "/api/blog/posts/page/:page",
+        blogPostController.findPostsByPage
+    );
+
+    app.get(
         "/api/blog/posts/q/:q",
         blogPostController.searchPost
     );

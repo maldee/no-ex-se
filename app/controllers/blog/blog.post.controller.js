@@ -86,6 +86,55 @@ exports.findAllPosts = (req, res) => {
         });
 };
 
+exports.findPostsByPage = (req, res) => {
+    var pageNo = req.params.page;
+    BlogPost.findAndCountAll({
+        order: [
+            ['publish', 'DESC'],
+        ],
+        offset: (pageNo - 1) * 10,
+        limit: 10
+    }).then((result) => {
+        var totalCount = result.count;
+        var data = result.rows;
+        var objectArray = [];
+
+        for (var i in data) {
+            var d = data[i];
+
+            var itemPerPage = 10;
+            var totalItemCount = data.length;
+            var page = parseInt(pageNo);
+
+            var tPages = Math.ceil(totalCount / itemPerPage);
+
+            var results = {
+                id: d.id,
+                author: d.author,
+                url: d.url,
+                title: d.title,
+                slug: d.slug,
+                image: d.image,
+                content: d.content,
+                read_time: d.read_time,
+                likes: d.likes,
+                category_name: d.category_name,
+                tags: d.tags,
+                publish: d.publish,
+                category_english_name: d.category_english_name,
+            };
+            objectArray.push(results);
+        }
+        res.send({ totalPages: tPages, totalCount: totalCount, pageCount: totalItemCount, page: page, results: objectArray });
+
+
+    }).catch((err) => {
+        res.status(500).send({
+            message: err.message || "Some error occurred while getting posts",
+        });
+    });
+};
+
 exports.findLatestPosts = (req, res) => {
     BlogPost.findAll({
             order: [
