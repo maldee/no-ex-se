@@ -33,6 +33,7 @@ db.classroom_video = require("../models/classroom/classroom.video.model.js")(seq
 db.classroom_video_grade = require("../models/classroom/classroom.video.grade.model.js")(sequelize, Sequelize);
 db.classroom_video_subject = require("../models/classroom/classroom.video.subject.model.js")(sequelize, Sequelize);
 db.classroom_video_teacher = require("../models/classroom/classroom.video.teacher.model.js")(sequelize, Sequelize);
+db.classroom_online_teacher = require("../models/classroom/classroom.online.teacher.model.js")(sequelize, Sequelize);
 
 db.cloudy_product = require("../models/cloudy/cloudy.product.model.js")(sequelize, Sequelize);
 

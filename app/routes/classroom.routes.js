@@ -3,6 +3,7 @@ const classroomVideoController = require("../controllers/classroom/classroom.vid
 const classroomVideoGradeController = require("../controllers/classroom/classroom.video.grade.controller");
 const classroomVideoSubjectController = require("../controllers/classroom/classroom.video.subject.controller");
 const classroomVideoTeacherController = require("../controllers/classroom/classroom.video.teacher.controller");
+const classroomOnlineTeacherController = require("../controllers/classroom/classroom.online.teacher.controller");
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -36,6 +37,11 @@ module.exports = function(app) {
     app.get(
         "/api/classroom/videos/teachers",
         classroomVideoTeacherController.findAllTeachers
+    );
+
+    app.get(
+        "/api/classroom/online/teachers/:grade/:subject",
+        classroomOnlineTeacherController.findAllOnlineTeachers
     );
 
     // Retrieve all Chatbits Posts
