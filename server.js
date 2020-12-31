@@ -50,7 +50,7 @@ require('./app/routes/auth.routes')(app);
 require('./app/routes/user.routes')(app);
 require('./app/routes/chatbits.routes')(app);
 require('./app/routes/classroom.routes')(app);
-require('./app/routes/cloudy.routes')(app);
+require('./app/routes/store.routes')(app);
 require('./app/routes/blog.routes')(app);
 require('./app/routes/quizy.routes')(app);
 require('./app/routes/qlake.routes')(app);

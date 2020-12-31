@@ -1,5 +1,5 @@
 const { authJwt } = require("../middleware");
-const cloudyProductController = require("../controllers/cloudy/cloudy.product.controller");
+const storeProductController = require("../controllers/store/store.product.controller");
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -11,11 +11,11 @@ module.exports = function(app) {
     });
 
     app.get(
-        "/api/cloudy/products",
-        cloudyProductController.findAllProducts
+        "/api/store/products",
+        storeProductController.findAllProducts
     );
     app.get(
-        "/api/cloudy/products/:id",
-        cloudyProductController.findByProductId
+        "/api/store/products/:id",
+        storeProductController.findByProductId
     );
 };

@@ -1,12 +1,12 @@
 const db = require("../../models");
 const config = require("../../config/auth.config");
 const User = db.user;
-const CloudyProducts = db.cloudy_product;
+const StoreProducts = db.store_product;
 
 
 exports.findAllProducts = (req, res) => {
 
-    CloudyProducts.findAll()
+    StoreProducts.findAll()
         .then(data => {
             var objectArray = [];
             for (var i in data) {
@@ -34,7 +34,7 @@ exports.findAllProducts = (req, res) => {
 
 exports.findByProductId = (req, res) => {
 
-    CloudyProducts.findAll({
+    StoreProducts.findAll({
             where: {
                 id: req.params.id,
             }

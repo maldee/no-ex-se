@@ -35,7 +35,7 @@ db.classroom_video_subject = require("../models/classroom/classroom.video.subjec
 db.classroom_video_teacher = require("../models/classroom/classroom.video.teacher.model.js")(sequelize, Sequelize);
 db.classroom_online_teacher = require("../models/classroom/classroom.online.teacher.model.js")(sequelize, Sequelize);
 
-db.cloudy_product = require("../models/cloudy/cloudy.product.model.js")(sequelize, Sequelize);
+db.store_product = require("../models/store/store.product.model.js")(sequelize, Sequelize);
 
 db.blog_post = require("../models/blog/blog.post.model.js")(sequelize, Sequelize);
 db.blog_category = require("../models/blog/blog.category.model.js")(sequelize, Sequelize);
