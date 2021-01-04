@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
     const store_product = sequelize.define("store_product", {
         title: {
-            type: Sequelize.STRING
+            type: Sequelize.TEXT('long')
         },
         image: {
-            type: Sequelize.STRING
+            type: Sequelize.TEXT('long')
         },
         description: {
-            type: Sequelize.STRING
+            type: Sequelize.TEXT('long')
         },
         price: {
             type: Sequelize.INTEGER
