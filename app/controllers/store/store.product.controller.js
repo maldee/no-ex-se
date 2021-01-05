@@ -18,8 +18,12 @@ exports.findAllProducts = (req, res) => {
                     id: d.id,
                     title: d.title,
                     description: d.description,
-                    image: d.image,
                     price: d.price,
+                    image_1: d.image_1,
+                    image_2: d.image_2,
+                    image_3: d.image_3,
+                    image_4: d.image_4,
+                    image_5: d.image_5,
                 };
                 objectArray.push(results);
             }
@@ -49,8 +53,12 @@ exports.findByProductId = (req, res) => {
                     id: d.id,
                     title: d.title,
                     description: d.description,
-                    image: d.image,
                     price: d.price,
+                    image_1: d.image_1,
+                    image_2: d.image_2,
+                    image_3: d.image_3,
+                    image_4: d.image_4,
+                    image_5: d.image_5,
                 };
                 objectArray.push(results);
             }

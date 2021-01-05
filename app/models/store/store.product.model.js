@@ -3,14 +3,26 @@ module.exports = (sequelize, Sequelize) => {
         title: {
             type: Sequelize.TEXT('long')
         },
-        image: {
-            type: Sequelize.TEXT('long')
-        },
         description: {
             type: Sequelize.TEXT('long')
         },
         price: {
             type: Sequelize.INTEGER
+        },
+        image_1: {
+            type: Sequelize.TEXT('long')
+        },
+        image_2: {
+            type: Sequelize.TEXT('long')
+        },
+        image_3: {
+            type: Sequelize.TEXT('long')
+        },
+        image_4: {
+            type: Sequelize.TEXT('long')
+        },
+        image_5: {
+            type: Sequelize.TEXT('long')
         },
 
     }, {
