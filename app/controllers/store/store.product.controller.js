@@ -7,7 +7,7 @@ const StoreProducts = db.store_product;
 exports.findAllProducts = (req, res) => {
 
     StoreProducts.findAll()
-        .then(data => {
+        .then((data) => {
             var objectArray = [];
             for (var i in data) {
                 var d = data[i];
@@ -25,7 +25,7 @@ exports.findAllProducts = (req, res) => {
             }
             res.send({ dataCount: totalItemCount, results: objectArray });
         })
-        .catch(err => {
+        .catch((err) => {
             res.send(500).send({
                 message: err.message || "Some error accurred while retrieving phrases."
             });
