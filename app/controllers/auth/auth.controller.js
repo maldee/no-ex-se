@@ -42,6 +42,7 @@ exports.signup = (req, res) => {
                         email: user.email,
                         password: user.password,
                         displayName: user.displayName,
+                        role: user.role
                     }
 
                     res.status(200).send(userDetails);
