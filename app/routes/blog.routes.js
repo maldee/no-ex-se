@@ -51,7 +51,7 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/blog/posts/:id",
+        "/api/blog/comments/:id",
         blogCommentController.findCommentsById
     );
 
