@@ -41,6 +41,7 @@ db.store_product_category = require("../models/store/store.product.category.mode
 db.blog_post = require("../models/blog/blog.post.model.js")(sequelize, Sequelize);
 db.blog_category = require("../models/blog/blog.category.model.js")(sequelize, Sequelize);
 db.blog_author = require("../models/blog/blog.author.model.js")(sequelize, Sequelize);
+db.blog_comment = require("../models/blog/blog.comment.model.js")(sequelize, Sequelize);
 
 db.quizy_quiz = require("../models/quizy/quizy.quiz.model.js")(sequelize, Sequelize);
 db.quizy_quiz_category = require("../models/quizy/quizy.quiz.category.model.js")(sequelize, Sequelize);

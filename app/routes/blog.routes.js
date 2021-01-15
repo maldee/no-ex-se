@@ -2,6 +2,7 @@ const { authJwt } = require("../middleware");
 const blogPostController = require("../controllers/blog/blog.post.controller");
 const blogCategoryController = require("../controllers/blog/blog.category.controller");
 const blogAuthorController = require("../controllers/blog/blog.author.controller");
+const blogCommentController = require("../controllers/blog/blog.comment.controller");
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -20,6 +21,11 @@ module.exports = function(app) {
     app.post(
         "/api/blog/addCategory", [authJwt.verifyToken],
         blogCategoryController.create
+    );
+
+    app.post(
+        "/api/blog/posts/addComment", [authJwt.verifyToken],
+        blogCommentController.create
     );
 
     app.get(
@@ -42,6 +48,11 @@ module.exports = function(app) {
     app.get(
         "/api/blog/posts/:slug",
         blogPostController.findBySlug
+    );
+
+    app.get(
+        "/api/blog/posts/:id",
+        blogCommentController.findCommentsById
     );
 
     app.get(
