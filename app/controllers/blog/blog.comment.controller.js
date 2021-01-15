@@ -28,7 +28,7 @@ exports.create = (req, res) => {
 
 exports.findCommentsById = (req, res) => {
 
-    BlogComment.findAll({ where: { qid: req.params.id } })
+    BlogComment.findAll({ where: { pid: req.params.id } })
         .then(data => {
             var objectArray = [];
             for (var i in data) {
