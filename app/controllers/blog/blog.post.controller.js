@@ -32,7 +32,6 @@ exports.create = (req, res) => {
         category_name: req.body.category_name,
         tags: req.body.tags,
         publish: req.body.publish,
-        category_english_name: req.body.category_english_name,
     };
 
     // Save post in database
@@ -73,7 +72,6 @@ exports.findAllPosts = (req, res) => {
                     category_name: d.category_name,
                     tags: d.tags,
                     publish: d.publish,
-                    category_english_name: d.category_english_name,
                 };
                 objectArray.push(results);
             }
@@ -121,7 +119,6 @@ exports.findPostsByPage = (req, res) => {
                 category_name: d.category_name,
                 tags: d.tags,
                 publish: d.publish,
-                category_english_name: d.category_english_name,
             };
             objectArray.push(results);
         }
@@ -162,7 +159,6 @@ exports.findLatestPosts = (req, res) => {
                     category_name: d.category_name,
                     tags: d.tags,
                     publish: d.publish,
-                    category_english_name: d.category_english_name,
                 };
                 objectArray.push(results);
             }
@@ -197,7 +193,6 @@ exports.findBySlug = (req, res) => {
                     category_name: d.category_name,
                     tags: d.tags,
                     publish: d.publish,
-                    category_english_name: d.category_english_name,
                 };
                 objectArray.push(results);
             }
@@ -211,7 +206,7 @@ exports.findBySlug = (req, res) => {
 };
 
 exports.findByCategory = (req, res) => {
-    BlogPost.findAll({ where: { category_english_name: req.params.category } })
+    BlogPost.findAll({ where: { category_name: req.params.category } })
         .then((data) => {
             var objectArray = [];
             for (var i in data) {
@@ -232,7 +227,6 @@ exports.findByCategory = (req, res) => {
                     category_name: d.category_name,
                     tags: d.tags,
                     publish: d.publish,
-                    category_english_name: d.category_english_name,
                 };
                 objectArray.push(results);
             }
@@ -288,7 +282,6 @@ exports.searchPost = (req, res) => {
                     category_name: d.category_name,
                     tags: d.tags,
                     publish: d.publish,
-                    category_english_name: d.category_english_name,
                 };
                 objectArray.push(results);
             }

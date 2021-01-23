@@ -6,9 +6,6 @@ module.exports = (sequelize, Sequelize) => {
         category_image: {
             type: Sequelize.TEXT
         },
-        category_english_name: {
-            type: Sequelize.TEXT
-        }
     }, {
         timestamps: false,
         freezeTableName: true,

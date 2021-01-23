@@ -33,10 +33,6 @@ module.exports = (sequelize, Sequelize) => {
         publish: {
             type: Sequelize.TEXT
         },
-        category_english_name: {
-            type: Sequelize.TEXT
-        },
-
     }, {
         timestamps: false,
         freezeTableName: true,
