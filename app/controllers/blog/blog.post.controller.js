@@ -127,7 +127,7 @@ exports.findPostsByPage = (req, res) => {
 
     }).catch((err) => {
         res.status(500).send({
-            message: err.message || "Some error occurred while getting posts",
+            message: err.message || "Some error occurred while getting posts by page",
         });
     });
 };
