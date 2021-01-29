@@ -90,8 +90,8 @@ exports.findPostsByPage = (req, res) => {
         order: [
             ['publish', 'DESC'],
         ],
-        offset: (pageNo - 1) * 18,
-        limit: 18
+        offset: (pageNo - 1) * 15,
+        limit: 15
     }).then((result) => {
         var totalCount = result.count;
         var data = result.rows;
@@ -100,7 +100,7 @@ exports.findPostsByPage = (req, res) => {
         for (var i in data) {
             var d = data[i];
 
-            var itemPerPage = 18;
+            var itemPerPage = 15;
             var totalItemCount = data.length;
             var page = parseInt(pageNo);
 
