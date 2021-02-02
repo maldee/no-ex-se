@@ -52,6 +52,8 @@ db.qlake_answer = require("../models/qlake/qlake.answer.model.js")(sequelize, Se
 db.qlake_category = require("../models/qlake/qlake.category.model.js")(sequelize, Sequelize);
 db.qlake_author = require("../models/qlake/qlake.author.model.js")(sequelize, Sequelize);
 
+db.cloudy_link = require("./cloudy/cloudy.link.model.js")(sequelize, Sequelize);
+
 db.role.belongsToMany(db.user, {
     through: "user_roles",
     otherKey: "roleId",

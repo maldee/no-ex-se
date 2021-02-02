@@ -54,6 +54,7 @@ require('./app/routes/store.routes')(app);
 require('./app/routes/blog.routes')(app);
 require('./app/routes/quizy.routes')(app);
 require('./app/routes/qlake.routes')(app);
+require('./app/routes/cloudy.routes')(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 5432;
