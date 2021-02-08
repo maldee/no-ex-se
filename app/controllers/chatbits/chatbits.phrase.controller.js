@@ -9,8 +9,7 @@ exports.create = (req, res) => {
     // Create a Phrase
     const phrase = {
         english_phrase: req.body.english_phrase,
-        sinhala_phrase: req.body.sinhala_phrase,
-        singlish_phrase: req.body.singlish_phrase,
+        non_english_phrase: req.body.non_english_phrase,
         note: req.body.note,
         categories: req.body.categories,
         situations: req.body.situations,

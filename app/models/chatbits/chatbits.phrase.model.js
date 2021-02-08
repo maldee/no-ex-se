@@ -4,10 +4,7 @@ module.exports = (sequelize, Sequelize) => {
         english_phrase: {
             type: Sequelize.STRING
         },
-        sinhala_phrase: {
-            type: Sequelize.STRING
-        },
-        singlish_phrase: {
+        non_english_phrase: {
             type: Sequelize.STRING
         },
         note: {
