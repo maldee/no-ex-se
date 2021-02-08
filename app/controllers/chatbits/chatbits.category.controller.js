@@ -6,7 +6,8 @@ const ChatbitsCategories = db.chatbits_category;
 
 exports.findAllCategories = (req, res) => {
 
-    ChatbitsCategories.findAll()
+
+    ChatbitsCategories.findAll({ where: { language: req.params.language } })
         .then(data => {
             let totalItemCount = data.length;
             res.send({ dataCount: totalItemCount, results: data });

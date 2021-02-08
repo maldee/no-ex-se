@@ -1,8 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const chatbits_situation = sequelize.define("chatbits_situation", {
-        situation: {
-            type: Sequelize.STRING
-        },
+    const chatbits_language = sequelize.define("chatbits_language", {
         language: {
             type: Sequelize.STRING
         }
@@ -11,5 +8,5 @@ module.exports = (sequelize, Sequelize) => {
         freezeTableName: true,
     });
 
-    return chatbits_situation;
+    return chatbits_language;
 };

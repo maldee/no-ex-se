@@ -32,6 +32,7 @@ db.role = require("../models/user/role.model.js")(sequelize, Sequelize);
 db.chatbits_phrase = require("../models/chatbits/chatbits.phrase.model.js")(sequelize, Sequelize);
 db.chatbits_category = require("../models/chatbits/chatbits.category.model.js")(sequelize, Sequelize);
 db.chatbits_situation = require("../models/chatbits/chatbits.situation.model.js")(sequelize, Sequelize);
+db.chatbits_language = require("../models/chatbits/chatbits.language.model.js")(sequelize, Sequelize);
 
 db.classroom_video = require("../models/classroom/classroom.video.model.js")(sequelize, Sequelize);
 db.classroom_video_grade = require("../models/classroom/classroom.video.grade.model.js")(sequelize, Sequelize);

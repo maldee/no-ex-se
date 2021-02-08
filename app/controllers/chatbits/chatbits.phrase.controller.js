@@ -14,6 +14,7 @@ exports.create = (req, res) => {
         note: req.body.note,
         categories: req.body.categories,
         situations: req.body.situations,
+        language: req.body.language,
     };
 
     // Save phrase in database
@@ -29,7 +30,7 @@ exports.create = (req, res) => {
 };
 
 exports.findAllPosts = (req, res) => {
-    ChatbitsPhrases.findAll()
+    ChatbitsPhrases.findAll({ where: { language: req.params.language } })
         .then((data) => {
             let totalItemCount = data.length;
             res.send({ dataCount: totalItemCount, results: data });

@@ -18,6 +18,9 @@ module.exports = (sequelize, Sequelize) => {
         },
         situations: {
             type: Sequelize.STRING
+        },
+        language: {
+            type: Sequelize.STRING
         }
     }, {
         timestamps: false,

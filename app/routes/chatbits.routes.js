@@ -2,6 +2,7 @@ const { authJwt } = require("../middleware");
 const chatbitsPostController = require("../controllers/chatbits/chatbits.phrase.controller");
 const chatbitsCategoryController = require("../controllers/chatbits/chatbits.category.controller");
 const chatbitsSituationController = require("../controllers/chatbits/chatbits.situation.controller");
+const chatbitsLanguageController = require("../controllers/chatbits/chatbits.language.controller");
 
 module.exports = function(app) {
     app.use(function(req, res, next) {
@@ -19,17 +20,22 @@ module.exports = function(app) {
 
     // Retrieve all Chatbits Posts
     app.get(
-        "/api/chatbits/phrases",
+        "/api/chatbits/phrases/:language",
         chatbitsPostController.findAllPosts
     );
 
     app.get(
-        "/api/chatbits/categories",
+        "/api/chatbits/categories/:language",
         chatbitsCategoryController.findAllCategories
     );
 
     app.get(
-        "/api/chatbits/situations",
+        "/api/chatbits/languages",
+        chatbitsLanguageController.findAllLanguages
+    );
+
+    app.get(
+        "/api/chatbits/situations/:language",
         chatbitsSituationController.findAllSituations
     );
 
