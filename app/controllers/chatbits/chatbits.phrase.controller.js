@@ -8,6 +8,7 @@ exports.create = (req, res) => {
 
     // Create a Phrase
     const phrase = {
+        id: req.body.id,
         english_phrase: req.body.english_phrase,
         non_english_phrase: req.body.non_english_phrase,
         note: req.body.note,
@@ -23,7 +24,7 @@ exports.create = (req, res) => {
         })
         .catch((err) => {
             res.status(500).send({
-                message: err.message || "Some error occurred while saving phrase",
+                message: err || "Some error occurred while saving phrase",
             });
         });
 };
