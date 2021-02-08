@@ -35,7 +35,7 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/chatbits/situations/:language",
+        "/api/chatbits/situations",
         chatbitsSituationController.findAllSituations
     );
 
