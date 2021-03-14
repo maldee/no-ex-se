@@ -11,7 +11,6 @@ exports.create = (req, res) => {
         qid: req.body.qid,
         category_name: req.body.category_name,
         category_image: req.body.category_image,
-        category_english_name: req.body.category_english_name,
     };
 
     // Save category in database
@@ -41,7 +40,6 @@ exports.findAllCategories = (req, res) => {
                     id: d.id,
                     category_name: d.category_name,
                     category_image: d.category_image,
-                    category_english_name: d.category_english_name,
 
                 };
                 objectArray.push(results);

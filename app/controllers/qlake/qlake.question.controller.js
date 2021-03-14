@@ -13,7 +13,6 @@ exports.create = (req, res) => {
         slug: req.body.slug,
         content: req.body.content,
         category_name: req.body.category_name,
-        category_english_name: req.body.category_english_name,
         tags: req.body.tags,
         asked: req.body.asked,
         views: req.body.views,
@@ -49,7 +48,6 @@ exports.findAllQuestions = (req, res) => {
                     slug: d.slug,
                     content: d.content,
                     category_name: d.category_name,
-                    category_english_name: d.category_english_name,
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
@@ -89,7 +87,6 @@ exports.findLatestQuestions = (req, res) => {
                     slug: d.slug,
                     content: d.content,
                     category_name: d.category_name,
-                    category_english_name: d.category_english_name,
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
@@ -126,7 +123,6 @@ exports.findById = (req, res) => {
                     slug: d.slug,
                     content: d.content,
                     category_name: d.category_name,
-                    category_english_name: d.category_english_name,
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
@@ -147,7 +143,7 @@ exports.findById = (req, res) => {
 exports.findByCategory = (req, res) => {
 
     QlakeQuestion.findAll({
-            where: { category_english_name: req.params.category }
+            where: { category_name: req.params.category }
         })
         .then(data => {
             var objectArray = [];
@@ -163,7 +159,6 @@ exports.findByCategory = (req, res) => {
                     slug: d.slug,
                     content: d.content,
                     category_name: d.category_name,
-                    category_english_name: d.category_english_name,
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
@@ -219,7 +214,6 @@ exports.searchQuestion = (req, res) => {
                     slug: d.slug,
                     content: d.content,
                     category_name: d.category_name,
-                    category_english_name: d.category_english_name,
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
