@@ -33,7 +33,11 @@ exports.create = (req, res) => {
 };
 
 exports.findAllQuestions = (req, res) => {
-    QlakeQuestion.findAll()
+    QlakeQuestion.findAll({
+        order: [
+            ['id', 'DESC'],
+        ]
+    })
         .then((data) => {
             var objectArray = [];
             for (var i in data) {
