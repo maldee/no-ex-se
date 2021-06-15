@@ -10,11 +10,16 @@ var bcrypt = require("bcryptjs");
 
 exports.signup = (req, res) => {
 
+    var token = jwt.sign({ id: user.id }, config.secret, {
+        expiresIn: 86400 // 24 hours
+    });
+
     const requser = {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 8),
         displayName: req.body.displayName,
         role: "User",
+        accessToken: token
     };
 
     // Save User to Database
