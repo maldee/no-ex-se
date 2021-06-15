@@ -18,7 +18,11 @@ module.exports = (sequelize, Sequelize) => {
         },
         role: {
             type: Sequelize.STRING
+        },
+        accessToken:{
+            type: Sequelize.STRING
         }
+
     }, {
         timestamps: false,
         freezeTableName: true,
