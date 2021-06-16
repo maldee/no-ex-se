@@ -133,7 +133,7 @@ exports.signInWithPopup = (req, res) => {
 
   console.log(req.body.email);
 
-  var token = jwt.sign({ id: user.id }, config.secret, {
+  var token = jwt.sign({ id: loginUser.id }, config.secret, {
     expiresIn: 86400, // 24 hours
   });
 
