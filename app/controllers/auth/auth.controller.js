@@ -122,6 +122,7 @@ exports.signin = (req, res) => {
 };
 
 exports.signInWithPopup = (req, res) => {
+    
   const loginUser = {
     id: req.body.id,
     displayName: req.body.displayName,
