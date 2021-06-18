@@ -24,6 +24,9 @@ module.exports = (sequelize, Sequelize) => {
         views: {
             type: Sequelize.INTEGER
         },
+        likes: {
+            type: Sequelize.INTEGER
+        },
         status: {
             type: Sequelize.INTEGER
         },

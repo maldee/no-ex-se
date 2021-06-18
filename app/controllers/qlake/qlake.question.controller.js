@@ -16,6 +16,7 @@ exports.create = (req, res) => {
         tags: req.body.tags,
         asked: req.body.asked,
         views: req.body.views,
+        likes: req.body.likes,
         status: req.body.status,
 
     };
@@ -55,6 +56,7 @@ exports.findAllQuestions = (req, res) => {
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
+                    likes: d.likes,
                     status: d.status,
                 };
                 objectArray.push(results);
@@ -94,6 +96,7 @@ exports.findLatestQuestions = (req, res) => {
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
+                    likes: d.likes,
                     status: d.status,
                 };
                 objectArray.push(results);
@@ -130,6 +133,7 @@ exports.findById = (req, res) => {
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
+                    likes: d.likes,
                     status: d.status,
 
                 };
@@ -166,6 +170,7 @@ exports.findByCategory = (req, res) => {
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
+                    likes: d.likes,
                     status: d.status,
                 };
                 objectArray.push(results);
@@ -221,6 +226,7 @@ exports.searchQuestion = (req, res) => {
                     tags: d.tags,
                     asked: d.asked,
                     views: d.views,
+                    likes: d.likes,
                     status: d.status,
 
                 };
