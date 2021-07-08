@@ -309,7 +309,6 @@ exports.findByCategoryPage = (req, res) => {
 
 exports.findByTagsPage = (req, res) => {
     var pageNo = req.params.page;
-   
     BlogPost.findAndCountAll({
         where: { tags: {
             [Op.like]: `%${req.params.tag}%`
