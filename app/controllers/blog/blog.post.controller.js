@@ -90,9 +90,9 @@ exports.findAllTags = (req, res) => {
          
             var totalItemCount = data.length;
 
-            res.send({ dataCount: totalItemCount, results: objectArray });
+            res.send({ dataCount: totalItemCount, results: data });
         })
-        
+
         .catch((err) => {
             res.send(500).send({
                 message: err.message || "Some error accurred while retrieving posts",
