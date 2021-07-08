@@ -61,6 +61,11 @@ module.exports = function(app) {
     );
 
     app.get(
+        "/api/blog/posts/byCategory/list/:category/page/:page",
+        blogPostController.findByCategoryPage
+    );
+
+    app.get(
         "/api/blog/posts/page/:page",
         blogPostController.findPostsByPage
     );
