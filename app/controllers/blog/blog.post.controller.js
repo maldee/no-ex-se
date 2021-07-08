@@ -244,10 +244,14 @@ exports.findByCategory = (req, res) => {
 exports.findByCategoryPage = (req, res) => {
     var pageNo = req.params.page;
     console.log("page num :"+pageNo);
-    BlogPost.findAndCountAll({ where: { category_name: req.params.category,
+    BlogPost.findAndCountAll({
+        where: { category_name: req.params.category},
+        order: [
+            ['publish', 'DESC'],
+        ],
         offset: (pageNo - 1) * 15,
-        limit: 15 } })
-        .then((result) => {
+        limit: 15
+    }).then((result) => {
             var totalCount = result.count;
             var data = result.rows;
             var objectArray = [];
