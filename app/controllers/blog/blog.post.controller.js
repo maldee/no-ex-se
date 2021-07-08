@@ -85,11 +85,14 @@ exports.findAllPosts = (req, res) => {
 };
 
 exports.findAllTags = (req, res) => {
-    BlogPost.findAll({attributes: ['tags']})
+    BlogPost.findAll({attributes: ['tags'],})
         .then((data) => {
-            
-            res.send({ results: data });
+         
+            var totalItemCount = data.length;
+
+            res.send({ dataCount: totalItemCount, results: objectArray });
         })
+        
         .catch((err) => {
             res.send(500).send({
                 message: err.message || "Some error accurred while retrieving posts",
