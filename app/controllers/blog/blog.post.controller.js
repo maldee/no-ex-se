@@ -307,6 +307,58 @@ exports.findByCategoryPage = (req, res) => {
         });
 };
 
+exports.findByTagsPage = (req, res) => {
+    var pageNo = req.params.page;
+   
+    BlogPost.findAndCountAll({
+        where: { tags: {
+            [Op.like]: `${req.params.tag}%`
+        }},
+        order: [
+            ['publish', 'DESC'],
+        ],
+        offset: (pageNo - 1) * 15,
+        limit: 15
+    }).then((result) => {
+            var totalCount = result.count;
+            var data = result.rows;
+            var objectArray = [];
+    
+            for (var i in data) {
+                var d = data[i];
+    
+                var itemPerPage = 15;
+                var totalItemCount = data.length;
+                var page = parseInt(pageNo);
+    
+                var tPages = Math.ceil(totalCount / itemPerPage);
+    
+                var results = {
+                    id: d.id,
+                    author: d.author,
+                    url: d.url,
+                    title: d.title,
+                    slug: d.slug,
+                    image: d.image,
+                    content: d.content,
+                    read_time: d.read_time,
+                    likes: d.likes,
+                    category_name: d.category_name,
+                    tags: d.tags,
+                    publish: d.publish,
+                };
+                objectArray.push(results);
+            }
+            res.send({ totalPages: tPages, totalCount: totalCount, pageCount: totalItemCount, page: page, results: objectArray });
+    
+        })
+        .catch((err) => {
+            res.sendStatus(500).send({
+                message: err.message || "Some error accurred while retrieving posts.",
+            });
+        });
+};
+
 exports.searchPost = (req, res) => {
     const q = req.params.q;
 

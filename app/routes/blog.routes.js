@@ -76,6 +76,11 @@ module.exports = function(app) {
     );
 
     app.get(
+        "/api/blog/posts/byTags/:tag/page/:page",
+        blogPostController.findByTagsPage
+    );
+
+    app.get(
         "/api/blog/posts/q/:q",
         blogPostController.searchPost
     );
