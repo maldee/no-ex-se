@@ -86,9 +86,7 @@ exports.findAllPosts = (req, res) => {
 };
 
 exports.findAllTags = (req, res) => {
-    BlogPost.findAll({attributes: ['tags'], order: [
-        [sequelize.fn('RAND', '')]
-      ], limit: 30 })
+    BlogPost.findAll({attributes: ['tags'], order: 'random()', limit: 30  })
         .then((data) => {
          
             var totalItemCount = data.length;
