@@ -1,5 +1,6 @@
 const db = require("../../models");
 const config = require("../../config/auth.config");
+const { sequelize } = require("../../models");
 const User = db.user;
 const BlogPost = db.blog_post;
 const Op = db.Sequelize.Op;
@@ -85,7 +86,7 @@ exports.findAllPosts = (req, res) => {
 };
 
 exports.findAllTags = (req, res) => {
-    BlogPost.findAll({attributes: ['tags'], order: Sequelize.literal('rand()'), limit: 20 })
+    BlogPost.findAll({attributes: ['tags'], order: sequelize.literal('rand()'), limit: 20 })
         .then((data) => {
          
             var totalItemCount = data.length;
