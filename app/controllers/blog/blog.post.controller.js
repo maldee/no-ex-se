@@ -84,6 +84,18 @@ exports.findAllPosts = (req, res) => {
         });
 };
 
+exports.findAllTags = (req, res) => {
+    BlogPost.findAll({attributes: ['tags']})
+        .then((data) => {
+            
+            res.send({ results: data });
+        })
+        .catch((err) => {
+            res.send(500).send({
+                message: err.message || "Some error accurred while retrieving posts",
+            });
+        });
+};
 
 
 exports.findPostsByPage = (req, res) => {

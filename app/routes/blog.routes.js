@@ -71,6 +71,11 @@ module.exports = function(app) {
     );
 
     app.get(
+        "/api/blog/tags",
+        blogPostController.findAllTags
+    );
+
+    app.get(
         "/api/blog/posts/q/:q",
         blogPostController.searchPost
     );
