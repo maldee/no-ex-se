@@ -86,7 +86,7 @@ exports.findAllPosts = (req, res) => {
 
 exports.findByCategoryPage = (req, res) => {
     var pageNo = req.params.page;
-    BlogPost.findAll({ where: { category_name: req.params.category,
+    BlogPost.findAndCountAll({({ where: { category_name: req.params.category,
         offset: (pageNo - 1) * 15,
         limit: 15 } })
         .then((result) => {
