@@ -312,7 +312,7 @@ exports.findByTagsPage = (req, res) => {
    
     BlogPost.findAndCountAll({
         where: { tags: {
-            [Op.like]: `${req.params.tag}%`
+            [Op.like]: `%${req.params.tag}%`
         }},
         order: [
             ['publish', 'DESC'],
