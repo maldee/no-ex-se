@@ -281,9 +281,7 @@ exports.findByCategoryPage = (req, res) => {
     
         })
         .catch((err) => {
-            res.send(500).send({
-                message: err.message || "Some error accurred while retrieving posts.",
-            });
+            console.log('error isssss ', err);
         });
 };
 
