@@ -61,7 +61,7 @@ module.exports = function(app) {
     );
 
     app.get(
-        "/api/blog/posts/byCategory/list/:category/page/:page",
+        "/api/blog/posts/byCategory/list/:category/:page",
         blogPostController.findByCategoryPage
     );
 
