@@ -1,6 +1,6 @@
-# Deeflow Global
+# D Global
 
-License: Copyright Deeflow(Pvt) Ltd
+License: Copyright Dee(Pvt) Ltd
 
 git add .
 git commit -m ""
