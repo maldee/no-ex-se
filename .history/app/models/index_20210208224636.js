@@ -8,9 +8,9 @@ const sequelize = new Sequelize(
         host: config.HOST,
         dialect: config.dialect,
         dialectOptions: {
-                "ssl": true,
-                ssl: { rejectUnauthorized: false }
-            },
+            "ssl": true,
+            ssl: { rejectUnauthorized: false }
+        },
         operatorsAliases: false,
         pool: {
             max: config.pool.max,
@@ -20,17 +20,6 @@ const sequelize = new Sequelize(
         }
     }
 );
-
-// Heroku 
-
-// dialectOptions: {
-//     "ssl": true,
-//     ssl: { rejectUnauthorized: false }
-// },
-
-// Localhost
-
-// dialectOptions: {},
 
 const db = {};
 

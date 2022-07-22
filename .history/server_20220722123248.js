@@ -12,15 +12,15 @@ app.use(cors());
 
 // Heroku
 
-var corsOptions = {
-    origin: "https://deeflow.com"
-};
+// var corsOptions = {
+    // origin: "https://deeflow.com"
+// };
 
 // localhost
 
-// var corsOptions = {
-//     origin: "http://localhost:4200"
-// };
+var corsOptions = {
+    origin: "http://localhost:4200"
+};
 
 
 app.use(cors(corsOptions));
