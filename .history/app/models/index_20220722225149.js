@@ -36,7 +36,6 @@ db.sequelize = sequelize;
 
 db.user = require("../models/user/user.model.js")(sequelize, Sequelize);
 db.role = require("../models/user/role.model.js")(sequelize, Sequelize);
-db.profile = require("../models/user/profile.model.js")(sequelize, Sequelize);
 
 db.chatbits_phrase = require("../models/chatbits/chatbits.phrase.model.js")(sequelize, Sequelize);
 db.chatbits_category = require("../models/chatbits/chatbits.category.model.js")(sequelize, Sequelize);
@@ -78,8 +77,6 @@ db.user.belongsToMany(db.role, {
     foreignKey: "userId",
     otherKey: "roleId"
 });
-
-db.profile.belongsTo(db.user, { foreignKey: 'profileId' });
 
 db.ROLES = ["User", "Admin", "Moderator"];
 

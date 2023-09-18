@@ -2,7 +2,7 @@ const db = require("../../models");
 const config = require("../../config/auth.config");
 const User = db.user;
 const Role = db.role;
-
+const Profile = db.profile;
 const Op = db.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
@@ -35,6 +35,14 @@ exports.signup = (req, res) => {
         var token = jwt.sign({ id: user.id }, config.secret, {
           expiresIn: 86400, // 24 hours
         });
+
+        const profile = {
+          id: user.id,
+          gender: "male"
+        };
+
+        // Save profile in database
+        Profile.create(profile);
 
         // user role = 1
         user.setRoles([1]).then(() => {
@@ -122,7 +130,7 @@ exports.signin = (req, res) => {
 };
 
 exports.signInWithPopup = (req, res) => {
-    
+
   const loginUser = {
     id: req.body.id,
     displayName: req.body.displayName,
